@@ -256,25 +256,7 @@ long microsecondsToCentimeters(long microseconds) {
   return microseconds / 29 / 2;
 }
 
-void buzzerLEDSyc() {
-  int delayTime;
-  int buzzerFreq;
- 
-  delayTime = map(Front_Distance, 0, 100, 50, 500); 
-  delayTime = constrain(delayTime, 50, 500);  
- 
-  buzzerFreq = map(Front_Distance, 0, 100, 3000, 1000);
-  buzzerFreq = constrain(buzzerFreq, 1000, 3000);
 
-  digitalWrite(A0, HIGH);
-  tone(A3, buzzerFreq);
-  delay(delayTime);
-
-  digitalWrite(A0, LOW);
-  noTone(A3);
-  delay(delayTime);
-
-}
 
 
 void setup(){
