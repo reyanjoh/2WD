@@ -1,4 +1,4 @@
-unsigned long startTime = 0;
+j
 
 void Infrared_Tracing() {
   int Left_Tra_Value = 1;
@@ -8,23 +8,23 @@ void Infrared_Tracing() {
   Right_Tra_Value = digitalRead(9);
   if (Left_Tra_Value != Black && Right_Tra_Value != Black) {
     digitalWrite(2,HIGH);
-    analogWrite(5,50);
+    analogWrite(5,40);
     digitalWrite(4,LOW);
-    analogWrite(6,50);
+    analogWrite(6,40);
   }
   else if (Left_Tra_Value == Black && Right_Tra_Value != Black) 
   {
     digitalWrite(2,LOW);
-    analogWrite(5,40);
+    analogWrite(5,30);
     digitalWrite(4,LOW);
-    analogWrite(6,40);
+    analogWrite(6,30);
   }
   else if (Left_Tra_Value != Black && Right_Tra_Value == Black) 
   {
     digitalWrite(2,HIGH);
-    analogWrite(5,40);
+    analogWrite(5,30);
     digitalWrite(4,HIGH);
-    analogWrite(6,40);
+    analogWrite(6,30);
   } 
   else if (Left_Tra_Value == Black && Right_Tra_Value == Black) 
   {
@@ -76,8 +76,8 @@ void setup(){
   pinMode(11, INPUT);
   pinMode(A0, OUTPUT);
   pinMode(A3, OUTPUT);
-}
 
+}
 
 
 
@@ -90,7 +90,7 @@ void loop(){
   if (elapsed < 10000) { 
     Infrared_Tracing();
   }
-  else if(elapsed < 20000) { 
+  else if(elapsed < 30000) { 
     stopMotors();
     pirDetection();
   }else{
