@@ -24,6 +24,7 @@ const int MIN_DIST = 5;
 const int MAX_DIST = 50;
 
 const int ALERT_DIST_CM = 30;
+int WEB_ALERT_DIST_CM = 30;
 
 unsigned long lastBeepTime = 0;
 long beepInterval = 500;
@@ -230,9 +231,13 @@ void sonicPulse() {
   duration = pulseIn(13, HIGH);
   cm = microsecondsToCentimeters(duration);
 
-  Serial.print("Distance: ");
-  Serial.print(cm);
-  Serial.println(" cm");
+  if(cm <= WEB_ALERT_DIST_CM ){
+    Serial.println("intruder!");
+  }else {
+    Serial.print("Distance: ");
+    Serial.print(cm);
+    Serial.println(" cm");
+  }
 
   // Only beep if object is <= ALERT_DIST_CM
   if (cm <= ALERT_DIST_CM) {
@@ -337,8 +342,4 @@ void nonBlockingBeep() {
 //    if (millis() - startTime < 10000) {
 //     Infrared_Tracing();
 //     Obstacle_Avoidance_Main();
-//   } else if(millis() - startTime < 10000) {
-//      sweep();
-//   }
-
-// }
+//   } else if(millis() - startTime < 10000)

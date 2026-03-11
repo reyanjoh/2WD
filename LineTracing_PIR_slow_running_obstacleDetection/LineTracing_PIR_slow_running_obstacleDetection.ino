@@ -28,7 +28,10 @@ long microsecondsToCentimeters(long microseconds) {
 
 void servoSweep() {
 
-  if (obstacleDetected) return;  
+  if (obstacleDetected) {
+    Serial.println("intruder!");
+    return;  
+  }
 
   myservo.write(servoPos);
   Serial.println(servoPos);
@@ -66,6 +69,7 @@ void sonicPulse(){
 
   if(cm <= obstacleDetectionDistance){
     obstacleDetected=true;
+    Serial.println("intruder!");
   }
 
   // Serial.print(inches);
@@ -162,9 +166,11 @@ void pirDetection(){
 
   if (motionState == HIGH) {
     alarm();
-    Serial.println("Motion Detected!");
+    // Serial.println("Motion Detected!");
+    Serial.println("intruder!");
   } else if(motionState == LOW) {
     stopAlarm();
+    Serial.println("0");
   }
 
 }
